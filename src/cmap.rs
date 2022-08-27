@@ -15,12 +15,11 @@ impl CMap {
     }
 
     pub fn palette(&self) -> Vec<(i64, i64, i64)> {
-        
-        self.vboxes.iter().map(|item| {
-            item.into_iter().map(|(key, val)| match val {
-                Value::Color(_, _, _) => return vec![val],
-                Value::VBox(_) => todo!(),
-            })
+        let data = self.vboxes.iter().map(|item| {
+            item.into_iter()
+                .filter(|&(k, _)| (k.to_lowercase()) == "color")
+                .map(|(_, value)| value)
         });
+        return vec![];
     }
 }

@@ -30,8 +30,8 @@ impl MMCQ {
             let index = MMCQ::get_color_index(rval, gval, bval);
             // Optimize this
             // Update  dict at index key with 0 and add 1
-
-            histo.insert(index, *histo.entry(index).or_insert(0) + 1);
+            let val = *histo.entry(index).or_insert(0);
+            histo.insert(index, val + 1);
         }
         return histo;
     }
