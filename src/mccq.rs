@@ -36,10 +36,7 @@ impl MMCQ {
         return histo;
     }
 
-    pub fn vbox_from_pixels(
-        pixels: Vec<(i64, i64, i64)>,
-        histo: HashMap<i64, i64>,
-    ) -> (i64, i64, i64, i64, i64, i64, HashMap<i64, i64>) {
+    pub fn vbox_from_pixels(pixels: Vec<(i64, i64, i64)>, histo: HashMap<i64, i64>) -> vbox::VBox {
         let mut rmin = 1000000;
         let mut rmax = 0;
         let mut gmin = 1000000;
