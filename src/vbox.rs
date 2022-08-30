@@ -39,7 +39,7 @@ impl VBox {
         return (sub_r + 1) * (sub_g + 1) * (sub_b + 1);
     }
 
-    pub fn copy(&self) -> Self {
+    pub fn copy(mut self) -> Self {
         return Self {
             r1: self.r1,
             r2: self.r2,
@@ -50,7 +50,7 @@ impl VBox {
             histo: self.histo,
         };
     }
-    pub fn avg(&self) -> (f64, f64, f64) {
+    pub fn avg(mut self) -> (f64, f64, f64) {
         let mut ntot = 0.00;
         let mut mult = (1 << (8 - mccq::SIGBITS)) as f64;
         let mut r_sum = 0.00;
@@ -103,7 +103,7 @@ impl VBox {
         .all(|x| !!x);
     }
 
-    pub fn count(&self) -> i64 {
+    pub fn count(mut self) -> i64 {
         let mut npix = 0;
         for i in self.r1..self.r2 + 1 {
             for j in self.g1..self.g2 + 1 {
