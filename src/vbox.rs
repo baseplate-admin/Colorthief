@@ -39,7 +39,7 @@ impl VBox {
         return (sub_r + 1) * (sub_g + 1) * (sub_b + 1);
     }
 
-    pub fn copy(mut self) -> Self {
+    pub fn copy(self) -> Self {
         return Self {
             r1: self.r1,
             r2: self.r2,
@@ -52,7 +52,7 @@ impl VBox {
     }
     pub fn avg(mut self) -> (f64, f64, f64) {
         let mut ntot = 0.00;
-        let mut mult = (1 << (8 - mccq::SIGBITS)) as f64;
+        let mult = (1 << (8 - mccq::SIGBITS)) as f64;
         let mut r_sum = 0.00;
         let mut g_sum = 0.00;
         let mut b_sum = 0.00;
@@ -69,9 +69,9 @@ impl VBox {
             }
         }
 
-        let mut r_avg;
-        let mut g_avg;
-        let mut b_avg;
+        let r_avg;
+        let g_avg;
+        let b_avg;
 
         if ntot != 0.00 {
             r_avg = r_sum / ntot;

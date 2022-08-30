@@ -11,15 +11,21 @@ pub struct CMap {
 
 impl CMap {
     pub fn new(vboxes: Vec<HashMap<String, Value>>) -> Self {
+        // Our Vboxes data structure looks like this
+        // [
+        //      { "vboxes": <Vbox_class>, "color": (123,123,123) }
+        // ]
         return Self { vboxes: vboxes };
     }
 
-    pub fn palette(&self) -> Vec<(i64, i64, i64)> {
-        let data = self.vboxes.iter().map(|item| {
-            item.into_iter()
-                .filter(|&(k, _)| (k.to_lowercase()) == "color")
-                .map(|(_, value)| value)
-        });
-        return vec![];
+    pub fn palette(&mut self) -> Vec<(i64, i64, i64)> {
+        let return_vector: Vec<(i64, i64, i64)> = Vec::new();
+        for item in &self.vboxes {
+            match item.get("color") {
+                Some(&value) => {}
+                None => todo!(),
+            }
+        }
+        return return_vector;
     }
 }
